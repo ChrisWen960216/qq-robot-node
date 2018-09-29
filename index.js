@@ -2,7 +2,10 @@ const CQWebSocket = require('cq-websocket');
 const mainController = require('./src/controller/index.js');
 const mainSentence = require('./src/sentences/index.js');
 
-const bot = new CQWebSocket();
+const bot = new CQWebSocket({
+  host: '192.168.6.62',
+  port: 6700,
+});
 
 
 // listen on all types of messages and print them to the console

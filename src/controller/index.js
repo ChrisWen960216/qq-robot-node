@@ -7,10 +7,10 @@ const rollController = require('./roll.js');
 
 function mainController(context) {
   const { message } = context;
-  switch (message) {
-    case 'roll': return rollController();
-    default: return null;
+  if (message.indexOf('roll') > -1) {
+    return rollController(message);
   }
+  return null;
 }
 
 module.exports = mainController;

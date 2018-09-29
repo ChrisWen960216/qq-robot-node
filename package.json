@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "cq-websocket": "^1.6.1",
-    "mri": "^1.1.1"
+    "cq-websocket": "^1.6.1"
   },
   "devDependencies": {
     "eslint": "^5.6.0",

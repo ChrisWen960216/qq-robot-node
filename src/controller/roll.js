@@ -1,7 +1,7 @@
 const rollUtils = require('../utils/roll');
 
-function rollController() {
-  const roll = rollUtils();
+function rollController(message) {
+  const roll = rollUtils(message);
   return roll;
 }
 

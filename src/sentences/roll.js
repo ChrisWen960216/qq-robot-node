@@ -1,22 +1,47 @@
 function commonPoints(context, roll) {
-  const user = context.sender.nickname;
-  const resSentence = `${user} 摇出了 ${roll}点`;
+  const { sender: { user_id: userId } } = context;
+  const resSentence = `[CQ:at, qq=${userId}] 摇出了 ${roll}点`;
   return resSentence;
 }
 
 function smallPoints(context, roll) {
-  const user = context.sender.nickname;
-  const resSentence = `${user} 你就roll了 ${roll}点? 还想碰奇遇? 真是笑死本宝宝了`;
+  const { sender: { user_id: userId } } = context;
+  if (userId === 578626801) {
+    return `[CQ:at, qq=${userId}] 你就roll了 ${roll}点？ Roll点不过关，叽萝当晚餐！`;
+  }
+  const resSentence = `[CQ:at, qq=${userId}] 你就roll了 ${roll}点? 还想碰奇遇? 真是笑死本宝宝了`;
   return resSentence;
 }
 
 function largePoints(context, roll) {
-  const user = context.sender.nickname;
-  const resSentence = `${user} 摇出了 ${roll}点, 彳亍口巴，我念某觉得你运气不错`;
+  const { sender: { user_id: userId } } = context;
+  const resSentence = `[CQ:at, qq=${userId}] 摇出了 ${roll}点, 彳亍口巴，我念某觉得你运气不错`;
+  return resSentence;
+}
+
+function zeroPoint(context) {
+  const { sender: { user_id: userId } } = context;
+  const resSentence = `[CQ:at, qq=${userId}] 你居然Roll到了0点！我他妈想请问一下你，你是怎么roll到的？`;
+  return resSentence;
+}
+
+function masterRoller(context) {
+  const { sender: { user_id: userId } } = context;
+  const resSentence = `[CQ:at, qq=${userId}] 你居然Roll到了100点！真是欧皇附体!`;
   return resSentence;
 }
 
 function generateRollSentence(context, roll) {
+  const { sender: { user_id: userId } } = context;
+  if (userId === 957638221) {
+    return masterRoller(context);
+  }
+  if (userId === 516906711) {
+    return `[CQ:at, qq=${userId}] 你居然Roll到了0点！我他妈想请问一下你，你是怎么roll到的？`;
+  }
+  if (roll === 0) {
+    return zeroPoint(context);
+  }
   if (roll < 30) {
     return smallPoints(context, roll);
   }

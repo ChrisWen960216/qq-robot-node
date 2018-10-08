@@ -7,7 +7,7 @@ const rollController = require('./roll.js');
 
 function mainController(context) {
   const { message } = context;
-  if (message.indexOf('roll') > -1) {
+  if (message === 'roll') {
     return rollController(message);
   }
   return null;

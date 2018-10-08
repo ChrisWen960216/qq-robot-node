@@ -36,9 +36,9 @@ function generateRollSentence(context, roll) {
   if (userId === 957638221) {
     return masterRoller(context);
   }
-  if (userId === 516906711) {
-    return `[CQ:at, qq=${userId}] 你居然Roll到了0点！我他妈想请问一下你，你是怎么roll到的？`;
-  }
+  // if (userId === 516906711) {
+  //   return `[CQ:at, qq=${userId}] 你居然Roll到了0点！我他妈想请问一下你，你是怎么roll到的？`;
+  // }
   if (roll === 0) {
     return zeroPoint(context);
   }

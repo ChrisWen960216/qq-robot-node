@@ -1,5 +1,5 @@
 const CQWebSocket = require('cq-websocket');
-const { clientConfig, FORMAL_GROUP_NUMBER } = require('./config.js');
+const { clientConfig, FORMAL_GROUP_NUMBER, TEST_GROUP_NUMBER } = require('./config.js');
 
 const mainController = require('./src/controller/index.js');
 const mainSentence = require('./src/sentences/index.js');
@@ -33,18 +33,19 @@ bot.on('message.group', (e, context) => {
   });
 });
 
-setTimeout(() => {
-  new Serendipity().fetchSerendipityList()
+setInterval(() => {
+  Serendipity.fetchSerendipityList()
     .then((data) => {
       if (!data) { return null; }
       const resData = handleSeredipity(data);
       const resStr = mainSentence(null, resData);
+      console.log(resStr);
       return bot('send_group_msg', {
         group_id: FORMAL_GROUP_NUMBER,
         message: resStr,
       });
     })
     .catch(error => console.log(error));
-}, 5000);
+}, 1000 * 30);
 
 // bot.on('')

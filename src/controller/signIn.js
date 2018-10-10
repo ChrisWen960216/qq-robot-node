@@ -4,11 +4,13 @@
  *  signIn Controller
  */
 
+const generateCandy = require('../utils/candy');
+
 function signInController(context) {
   const { sender: { user_id: userId } } = context;
   const avatarSrc = `https://q1.qlogo.cn/g?b=qq&nk=${userId}&s=100`;
-  const signInLucky = '';
-  return { type: 'signIn', data: { avatarSrc, signInLucky } };
+  const candy = generateCandy();
+  return { type: 'signIn', data: { avatarSrc, candy } };
 }
 
 module.exports = signInController;

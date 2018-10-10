@@ -8,8 +8,5 @@ function signInLimit(userId) {
   return true;
 }
 
-// function luckyGenerate(userId) {
-//   if (userId === 957638221) { return 100; }
-// }
 
 module.exports = { signInLimit };

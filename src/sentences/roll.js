@@ -6,9 +6,6 @@ function commonPoints(context, roll) {
 
 function smallPoints(context, roll) {
   const { sender: { user_id: userId } } = context;
-  if (userId === 578626801) {
-    return `[CQ:at, qq=${userId}] 你就roll了 ${roll}点？ Roll点不过关，叽萝当晚餐！`;
-  }
   const resSentence = `[CQ:at, qq=${userId}] 你就roll了 ${roll}点? 还想碰奇遇? 真是笑死本宝宝了`;
   return resSentence;
 }
@@ -36,9 +33,6 @@ function generateRollSentence(context, roll) {
   if (userId === 957638221) {
     return masterRoller(context);
   }
-  // if (userId === 516906711) {
-  //   return `[CQ:at, qq=${userId}] 你居然Roll到了0点！我他妈想请问一下你，你是怎么roll到的？`;
-  // }
   if (roll === 0) {
     return zeroPoint(context);
   }

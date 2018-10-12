@@ -5,6 +5,7 @@
  */
 const rollController = require('./roll.js');
 const signInController = require('./signIn.js');
+const repeatController = require('./repeat');
 
 function mainController(context) {
   const { message } = context;
@@ -14,7 +15,8 @@ function mainController(context) {
   if (message === '签到') {
     return signInController(context);
   }
-  return null;
+  // return null;
+  return repeatController(context);
 }
 
 module.exports = mainController;

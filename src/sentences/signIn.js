@@ -17,9 +17,9 @@ function generateSignInSentence(context, data) {
   } else {
     signInSentence = `*** [CQ:at,qq=${userId}] 签到失败! ***
 我的马鸭，你今天已经签到过了!
-害我白白算了那么久的时间!
-我求求你了，你可做个人吧。签没签到都不记得吗？
-等我的暴躁老哥语言库开发完成我喷死你`;
+签没签到都不记得吗？
+等我的暴躁老哥语言库开发完成我喷死你。
+我劝你善良`;
   }
   return signInSentence;
 }

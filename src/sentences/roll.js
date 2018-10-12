@@ -29,10 +29,6 @@ function masterRoller(context) {
 }
 
 function generateRollSentence(context, roll) {
-  const { sender: { user_id: userId } } = context;
-  if (userId === 957638221) {
-    return masterRoller(context);
-  }
   if (roll === 0) {
     return zeroPoint(context);
   }
@@ -41,6 +37,9 @@ function generateRollSentence(context, roll) {
   }
   if (roll > 90) {
     return largePoints(context, roll);
+  }
+  if (roll === 100) {
+    return masterRoller(context);
   }
   return commonPoints(context, roll);
 }

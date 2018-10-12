@@ -7,11 +7,9 @@ const Serendipity = require('./client/serendipity.js');
 
 const { handleSeredipity } = require('./service/serendipity.js');
 
-// const TEST_GROUP_NUMBER = 869911196;
-
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = true;
+const TEST = false;
 
 
 // 处理私聊消息

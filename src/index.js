@@ -22,7 +22,7 @@ bot.on('message.private', (e, context) => {
       return null;
     })
     .then(resMsg => bot('send_private_msg', {
-      user_id: userId.toString(),
+      user_id: TEST ? '957638221' : userId.toString(),
       message: resMsg,
     }));
 });
@@ -32,9 +32,20 @@ bot.on('message.group', (e, context) => {
   const resData = mainController(context);
   if (!resData) { return null; }
   const resStr = mainSentence(context, resData);
-  const { group_id: groupId } = context;
+  const { group_id: groupId, sender: { user_id: userId } } = context;
+  if (resStr.type) {
+    return bot('send_group_msg', {
+      group_id: TEST ? TEST_GROUP_NUMBER : groupId,
+      message: resStr.str,
+    }).then(() => bot('set_group_ban', {
+      group_id: TEST ? TEST_GROUP_NUMBER : groupId,
+      user_id: userId,
+      duration: 30,
+    }));
+  }
+
   return bot('send_group_msg', {
-    group_id: groupId,
+    group_id: TEST ? TEST_GROUP_NUMBER : groupId,
     message: resStr,
   });
 });

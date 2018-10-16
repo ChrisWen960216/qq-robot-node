@@ -5,6 +5,7 @@
  */
 const rollController = require('./roll.js');
 const signInController = require('./signInController');
+const talentController = require('./talentController');
 const repeatController = require('./repeat');
 
 function mainController(context) {
@@ -15,7 +16,9 @@ function mainController(context) {
   if (message === '签到') {
     return signInController(context);
   }
-  // return null;
+  if (message.indexOf('天赋') > -1) {
+    return talentController(context);
+  }
   return repeatController(context);
 }
 

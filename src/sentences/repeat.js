@@ -1,6 +1,9 @@
 
 function generateRepeatSentence(context, data) {
-  const sentence = data;
+  const sentence = {
+    type: 'repeat',
+    str: data,
+  };
   return sentence;
 }
 

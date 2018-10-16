@@ -9,7 +9,7 @@ const { handleSeredipity } = require('./service/serendipity.js');
 
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = false;
+const TEST = true;
 
 // 处理群消息
 bot.on('message.group', async (e, context) => {

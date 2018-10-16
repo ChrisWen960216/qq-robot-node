@@ -20,7 +20,9 @@ function signInController(context) {
     return updateUserById(userId, { ..._userInfo, signIn: today });
   }).then(([$error, $userInfo]) => {
     if ($error) { console.error($error); }
-    const _userInfo = $userInfo ? { ...new UserService($userInfo).getUserInfo(), avatarSrc, todayCandy: candy } : null;
+    const _userInfo = $userInfo
+      ? { ...new UserService($userInfo).getUserInfo(), avatarSrc, todayCandy: candy }
+      : null;
     return { type: 'signIn', data: _userInfo };
   });
 }

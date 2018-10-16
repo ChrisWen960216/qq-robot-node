@@ -4,7 +4,7 @@
  *  QQBot 应答处理
  */
 const rollController = require('./roll.js');
-const signInController = require('./signIn.js');
+const signInController = require('./signInController');
 const repeatController = require('./repeat');
 
 function mainController(context) {

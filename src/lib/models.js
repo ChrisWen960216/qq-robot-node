@@ -7,9 +7,9 @@ const mongodbOption = { useNewUrlParser: true, useFindAndModify: false };
 const blogDB = mongoose.createConnection('mongodb://localhost:27017/robotDB', mongodbOption);
 
 const userSchema = new Schema({
-  id: String,
-  // 现金，每天签到送的枫叶都存在这里
-  cash: {
+  id: Number,
+  // 糖果，每天签到送的枫叶都存在这里
+  candy: {
     type: Number,
     default: 0,
   },

@@ -8,5 +8,4 @@ function signInLimit(userId) {
   return true;
 }
 
-
 module.exports = { signInLimit };

@@ -38,7 +38,6 @@ function repeatController(context) {
     repeatStoreObj[groupId].content = message;
     repeatStoreObj[groupId].times = 1;
     repeatStoreObj[groupId].repeated = false;
-    console.log('message !== content && times > 1', repeatStoreObj[groupId]);
     return { type: 'judgement', data: times };
   }
 
@@ -46,7 +45,6 @@ function repeatController(context) {
     repeatStoreObj[groupId].content = message;
     repeatStoreObj[groupId].times = 1;
     repeatStoreObj[groupId].repeated = false;
-    console.log('message !== content', repeatStoreObj[groupId]);
     return null;
   }
 
@@ -55,11 +53,9 @@ function repeatController(context) {
     repeatStoreObj[groupId].times += 1;
     if (repeated) { return null; }
     repeatStoreObj[groupId].repeated = true;
-    console.log('message === content', repeatStoreObj[groupId]);
     return { type: 'repeat', data: content };
   }
 
-  console.log('其他情况', repeatStoreObj[groupId]);
   return null;
 }
 

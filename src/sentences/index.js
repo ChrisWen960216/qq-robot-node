@@ -2,7 +2,7 @@ const generateRollSentence = require('./roll.js');
 const { generateSerendipitySentence } = require('./serendipity.js');
 const { generateSignInSentence } = require('./signIn.js');
 const { generateRepeatSentence, generateJudgementSentence } = require('./repeat');
-const { generateTalentStoreSentence } = require('./talent');
+const { generateTalentStoreSentence, generateBuyingTalentSentence } = require('./talent');
 
 function mainSentence(context, dataConfig) {
   const { type, data } = dataConfig;
@@ -13,6 +13,7 @@ function mainSentence(context, dataConfig) {
     case 'repeat': return generateRepeatSentence(context, data);
     case 'judgement': return generateJudgementSentence(context, data);
     case 'talentStore': return generateTalentStoreSentence(context, data);
+    case 'buyingTalent': return generateBuyingTalentSentence(context, data);
     default: return null;
   }
 }

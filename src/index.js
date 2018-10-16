@@ -9,14 +9,14 @@ const { handleSeredipity } = require('./service/serendipity.js');
 
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = true;
+const TEST = false;
 
 // 处理群消息
 bot.on('message.group', async (e, context) => {
   const resData = await mainController(context);
   const { group_id: groupId } = context;
   if (!resData) { return null; }
-  const resSentence = mainSentence(context, resData);
+  const resSentence = await mainSentence(context, resData);
   return bot('send_group_msg', {
     group_id: TEST ? TEST_GROUP_NUMBER : groupId,
     message: resSentence.str,

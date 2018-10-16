@@ -5,4 +5,9 @@ function handleTimeStr(timestr) {
   return realTimeStr;
 }
 
-module.exports = { handleTimeStr };
+function getTodayTimeStr() {
+  const todayStr = new Date(new Date().toLocaleDateString()).getTime().toString();
+  return todayStr;
+}
+
+module.exports = { handleTimeStr, getTodayTimeStr };

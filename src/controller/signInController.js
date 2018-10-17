@@ -8,7 +8,7 @@ function signInController(context) {
   const avatarSrc = `https://q1.qlogo.cn/g?b=qq&nk=${userId}&s=100`;
   const candy = generateCandy();
 
-  return updateUserById(userId, { candy }).then(([error, userInfo]) => {
+  return updateUserById(userId).then(([error, userInfo]) => {
     if (error) { console.error(error); }
     const user = new UserService(userInfo);
     const signIn = user.getSignTime();
@@ -17,7 +17,8 @@ function signInController(context) {
 
     if (signIn === today) { return [null, null]; }
     _userInfo.avatarSrc = avatarSrc;
-    return updateUserById(userId, { ..._userInfo, signIn: today });
+    const { candy: totalCandy } = _userInfo;
+    return updateUserById(userId, { ..._userInfo, signIn: today, candy: candy + totalCandy });
   }).then(([$error, $userInfo]) => {
     if ($error) { console.error($error); }
     const _userInfo = $userInfo

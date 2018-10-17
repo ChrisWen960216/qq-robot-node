@@ -23,6 +23,26 @@ const talentConfig = [
     type: 'passive',
     details: { startCost: 0 },
   },
+  {
+    id: '3',
+    title: '神卫【暂未实装】',
+    from: '壁立千仞，无欲则刚',
+    desc: '受到攻击时，用防御的1.5倍代替攻击。你装备防具时，额外获得20%的防御加成。',
+    order: '无',
+    cost: 20,
+    type: 'passive',
+    details: { startCost: 0 },
+  },
+  {
+    id: '4',
+    title: '影袭【暂未实装】',
+    from: '赵客缦胡缨，吴钩霜雪明',
+    desc: '你的攻击无视被动。',
+    order: '发动口令: [@机器人 影袭 @被影袭的可怜人]',
+    cost: 10,
+    type: 'active',
+    details: { startCost: 5 },
+  },
 ];
 
 module.exports = talentConfig;

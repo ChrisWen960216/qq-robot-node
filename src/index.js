@@ -36,10 +36,12 @@ setInterval(() => {
     .then((data) => {
       if (!data) { return null; }
       const resData = handleSeredipity(data);
+      console.log(resData);
       const resStr = mainSentence(null, resData);
+      console.log('resStr', resStr);
       return bot('send_group_msg', {
         group_id: TEST ? TEST_GROUP_NUMBER : FORMAL_GROUP_NUMBER,
-        message: resStr,
+        message: resStr.str,
       });
     })
     .catch(error => console.error(error));

@@ -18,7 +18,7 @@ ${item.desc}
 function generateBuyingTalentSentence(context, data) {
   const { sender: { user_id: userId } } = context;
   const { userInfo } = data;
-  if (!userInfo) { return { type: 'buyingTalent', str: '购买失败，你的资产不足！' }; }
+  if (!userInfo) { return { type: 'buyingTalent', str: '购买失败，不存在该项天赋或者你的资产不足！' }; }
   const {
     candy, armor, talent, AC, DE,
   } = userInfo;

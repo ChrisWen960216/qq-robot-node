@@ -21,6 +21,7 @@ class Serendipity {
     // 根据时间分析是否是新触发的奇遇
     const { time: _latestTime } = latestSerend;
 
+
     if (_latestTime === latestTime) { return null; }
 
     // 更新最新的奇遇时间

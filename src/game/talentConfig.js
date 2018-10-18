@@ -17,7 +17,7 @@ const talentConfig = [
     title: '缄默',
     desc: '【被动】机器人无法主动将你禁言',
     order: '无',
-    cost: 20,
+    cost: 50,
     type: 'passive',
     details: { startCost: 0 },
   },

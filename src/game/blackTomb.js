@@ -7,17 +7,18 @@ function checkProbability(limit = 8) {
   return result;
 }
 
-function checkQualication(userId) {
-  return findUserById({ id: userId }).then(([error, userInfo]) => {
-    if (error) { return [error, null]; }
-    if (!userInfo) { return [null, false]; }
+async function checkQualication(userId) {
+  return findUserById(userId)
+    .then(([error, userInfo]) => {
+      if (error) { return [error, null]; }
+      if (!userInfo) { return [null, false]; }
 
-    const { talent } = new UserService(userInfo).getUserInfo();
+      const { talent } = new UserService(userInfo).getUserInfo();
 
-    if (talent !== '黑鬼的坟墓') { return [null, false]; }
-    const result = checkProbability();
-    return [null, result];
-  });
+      if (talent !== '黑鬼的坟墓') { return [null, false]; }
+      const result = checkProbability();
+      return [null, result];
+    });
 }
 
 

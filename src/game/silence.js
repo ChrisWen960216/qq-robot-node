@@ -22,7 +22,7 @@ async function checkSenderQualication(senderId) {
   return [true, 0, senderInfo];
 }
 
-function handleSenderFailure(groupId, sender, reasonCode, bot) {
+async function handleSenderFailure(groupId, sender, reasonCode, bot) {
   switch (reasonCode) {
     case 1:
       return bot('send_group_msg', {

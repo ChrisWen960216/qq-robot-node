@@ -7,4 +7,11 @@ function updateUserById(id, userDetails) {
     .catch(error => [error, null]);
 }
 
-module.exports = { updateUserById };
+function findUserById(id) {
+  return UserModel
+    .findOne({ id })
+    .then(user => [null, user])
+    .catch(error => [error, null]);
+}
+
+module.exports = { updateUserById, findUserById };

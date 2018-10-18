@@ -1,9 +1,10 @@
 const silenceController = require('./silence');
-const { splitGameArgs } = require('../utils/game');
+const { splitGameArgs, gameErrNotice } = require('../utils/game');
 
 
-function gameController(context, bot) {
-  const commandArgs = splitGameArgs(context);
+async function gameController(context, bot) {
+  const [error, commandArgs] = await splitGameArgs(context);
+  if (error || !commandArgs) { return gameErrNotice(context, bot); }
   const { commder } = commandArgs;
 
   switch (commder) {

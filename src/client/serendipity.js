@@ -30,9 +30,8 @@ class Serendipity {
     // 对比当前时间和奇遇触发的时间
     const now = new Date().getTime();
     const realLatestTime = Number(_latestTime) * 1000;
-
     // 如果在当前时间的五分钟之前，那么依旧不上报
-    if ((now - realLatestTime) < 5 * 60 * 1000) { return latestSerend; }
+    if ((now - realLatestTime) < (5 * 60 * 1000)) { return latestSerend; }
     return null;
   }
 

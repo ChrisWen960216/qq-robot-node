@@ -1,5 +1,6 @@
 const { updateUserById, findUserById } = require('../lib/user');
 const UserService = require('../service/user');
+const { checkQualication } = require('./blackTomb');
 
 
 function silenceController(commandArgs, context, bot) {
@@ -7,7 +8,7 @@ function silenceController(commandArgs, context, bot) {
   const { group_id: groupId } = context;
 
   return findUserById(sender)
-    .then(([error, senderInfo]) => {
+    .then(async ([error, senderInfo]) => {
       if (error) { return [error, null]; }
       const _senderInfo = new UserService(senderInfo).getUserInfo();
       const { candy, talent: senderTalent } = _senderInfo;
@@ -26,6 +27,19 @@ function silenceController(commandArgs, context, bot) {
           group_id: groupId,
           message: `[CQ:at, qq=${sender}] 沉默发动失败，你没有足够的糖果来发动该技能`,
         });
+      }
+
+      const reflex = await checkQualication(targeter);
+      if (reflex) {
+        return bot('send_group_msg', {
+          group_id: groupId,
+          message: `[CQ:at, qq=${sender}] 目标天赋【黑鬼的坟墓】命运骰判定有效，此次沉默效果被反射到你自身`,
+        })
+          .then(() => bot('set_group_ban', {
+            group_id: groupId,
+            user_id: Number(sender),
+            duration: 60,
+          }));
       }
 
       // 如果都成功，检查目标天赋

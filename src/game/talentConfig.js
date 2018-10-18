@@ -21,6 +21,14 @@ const talentConfig = [
     type: 'passive',
     details: { startCost: 0 },
   },
+  {
+    id: '3',
+    title: '黑鬼的坟墓',
+    desc: '【被动】【Designed by 南居客】20%概率将禁言反射。',
+    cost: 10,
+    type: 'passive',
+    details: { startCost: 0 },
+  },
   // {
   //   id: '3',
   //   title: '神卫【暂未实装】',

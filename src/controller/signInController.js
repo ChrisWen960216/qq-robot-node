@@ -7,7 +7,7 @@ const UserService = require('../service/user');
 async function signInController(context) {
   const { sender: { user_id: userId } } = context;
   const avatarSrc = `https://q1.qlogo.cn/g?b=qq&nk=${userId}&s=100`;
-  const candy = generateCandy();
+  let candy = generateCandy();
 
   const [error, oldUserInfo] = await updateUserById(userId);
   if (error) { console.log(error); return null; }
@@ -20,6 +20,8 @@ async function signInController(context) {
   if (signIn === today) { return { type: 'signIn', data: null }; }
   const { candy: totalCandy, talent } = userInfo;
   if (talent === '马太福音') { userInfo.matthewCandy = calMatthewCandy(candy); }
+  if (talent === '最后的财富') { candy = Math.max(candy, 1); }
+  if (talent === '女神的馈赠') { candy = 4; }
   userInfo.avatarSrc = avatarSrc;
 
   const [_error, _userInfo] = await updateUserById(userId, {
@@ -35,7 +37,6 @@ async function signInController(context) {
     todayCandy: candy,
     matthewCandy: userInfo.matthewCandy || null,
   } : null;
-  console.log(resUserInfo);
   return { type: 'signIn', data: resUserInfo };
 }
 

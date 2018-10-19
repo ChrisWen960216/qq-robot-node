@@ -5,7 +5,6 @@ const signInSentence = {
 
 function generateSignInSentence(context, data) {
   const { sender: { user_id: userId } } = context;
-  console.log(data);
   if (!data) {
     signInSentence.str = `*** [CQ:at, qq=${userId}] 签到失败! ***
 你今天已经签到过了!`;

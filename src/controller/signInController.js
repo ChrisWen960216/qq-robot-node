@@ -1,31 +1,42 @@
 const generateCandy = require('../utils/candy');
 const { getTodayTimeStr } = require('../utils/time');
 const { updateUserById } = require('../lib/user');
+const { calMatthewCandy } = require('../game/matthew');
 const UserService = require('../service/user');
 
-function signInController(context) {
+async function signInController(context) {
   const { sender: { user_id: userId } } = context;
   const avatarSrc = `https://q1.qlogo.cn/g?b=qq&nk=${userId}&s=100`;
   const candy = generateCandy();
 
-  return updateUserById(userId).then(([error, userInfo]) => {
-    if (error) { console.error(error); }
-    const user = new UserService(userInfo);
-    const signIn = user.getSignTime();
-    const _userInfo = user.getUserInfo();
-    const today = getTodayTimeStr();
+  const [error, oldUserInfo] = await updateUserById(userId);
+  if (error) { console.log(error); return null; }
 
-    if (signIn === today) { return [null, null]; }
-    _userInfo.avatarSrc = avatarSrc;
-    const { candy: totalCandy } = _userInfo;
-    return updateUserById(userId, { ..._userInfo, signIn: today, candy: candy + totalCandy });
-  }).then(([$error, $userInfo]) => {
-    if ($error) { console.error($error); }
-    const _userInfo = $userInfo
-      ? { ...new UserService($userInfo).getUserInfo(), avatarSrc, todayCandy: candy }
-      : null;
-    return { type: 'signIn', data: _userInfo };
+  const user = new UserService(oldUserInfo);
+  const signIn = user.getSignTime();
+  const userInfo = user.getUserInfo();
+  const today = getTodayTimeStr();
+
+  if (signIn === today) { return { type: 'signIn', data: null }; }
+  const { candy: totalCandy, talent } = userInfo;
+  if (talent === '马太福音') { userInfo.matthewCandy = calMatthewCandy(candy); }
+  userInfo.avatarSrc = avatarSrc;
+
+  const [_error, _userInfo] = await updateUserById(userId, {
+    ...userInfo,
+    signIn: today,
+    candy: (userInfo.matthewCandy || candy) + totalCandy,
   });
+
+  if (_error) { console.error(_error); return null; }
+  const resUserInfo = _userInfo ? {
+    ...new UserService(_userInfo).getUserInfo(),
+    avatarSrc,
+    todayCandy: candy,
+    matthewCandy: userInfo.matthewCandy || null,
+  } : null;
+  console.log(resUserInfo);
+  return { type: 'signIn', data: resUserInfo };
 }
 
 module.exports = signInController;

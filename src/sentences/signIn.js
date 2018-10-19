@@ -8,8 +8,7 @@ function generateSignInSentence(context, data) {
   if (!data) {
     signInSentence.str = `*** [CQ:at, qq=${userId}] 签到失败! ***
 你今天已经签到过了!`;
-  }
-  if (data.matthewCandy) {
+  } else if (data.matthewCandy) {
     const {
       candy, talent, avatarSrc, matthewCandy, todayCandy,
     } = data;

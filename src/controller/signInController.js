@@ -18,16 +18,18 @@ async function signInController(context) {
   const today = getTodayTimeStr();
 
   if (signIn === today) { return { type: 'signIn', data: null }; }
-  const { candy: totalCandy, talent } = userInfo;
-  if (talent === '马太福音') { userInfo.matthewCandy = calMatthewCandy(candy); }
+  const { candy: totalCandy, talent, locked } = userInfo;
   if (talent === '最后的财富') { candy = Math.max(candy, 1); }
   if (talent === '女神的馈赠') { candy = 4; }
+  if (locked) { candy = 0; }
+  if (talent === '马太福音') { userInfo.matthewCandy = calMatthewCandy(candy); }
   userInfo.avatarSrc = avatarSrc;
 
   const [_error, _userInfo] = await updateUserById(userId, {
     ...userInfo,
     signIn: today,
     candy: (userInfo.matthewCandy || candy) + totalCandy,
+    locked: false,
   });
 
   if (_error) { console.error(_error); return null; }

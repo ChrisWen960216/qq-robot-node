@@ -1,4 +1,5 @@
 const silenceController = require('./silence');
+const lockedController = require('./locked');
 const { splitGameArgs, gameErrNotice } = require('../utils/game');
 
 
@@ -9,6 +10,7 @@ async function gameController(context, bot) {
 
   switch (commder) {
     case '沉默': return silenceController(commandArgs, context, bot);
+    case '锁定': return lockedController(commandArgs, context, bot);
     default: return null;
   }
 }

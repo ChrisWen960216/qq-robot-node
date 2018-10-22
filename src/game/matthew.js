@@ -3,7 +3,7 @@ function calMatthewCandy(candys) {
   if (candys > 5) {
     matthewCandy = candys * 2;
   } else {
-    matthewCandy = Math.floor(candys / 2);
+    matthewCandy = Math.round(candys / 2);
   }
   return matthewCandy;
 }

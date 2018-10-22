@@ -5,9 +5,9 @@ const { generateRepeatSentence, generateJudgementSentence } = require('./repeat'
 const { generateTalentStoreSentence, generateBuyingTalentSentence } = require('./talent');
 
 function mainSentence(context, dataConfig) {
-  const { type, data } = dataConfig;
+  const { type, data, details = {} } = dataConfig;
   switch (type) {
-    case 'roll': return generateRollSentence(context, data);
+    case 'roll': return generateRollSentence(context, data, details);
     case 'serendipity': return generateSerendipitySentence(context, data);
     case 'signIn': return generateSignInSentence(context, data);
     case 'repeat': return generateRepeatSentence(context, data);

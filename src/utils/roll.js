@@ -1,6 +1,6 @@
 function roll() {
-  const _roll = Math.floor(Math.random() * 100);
-  return { type: 'roll', data: _roll };
+  const _roll = Math.round(Math.random() * 100);
+  return _roll;
 }
 
 module.exports = roll;

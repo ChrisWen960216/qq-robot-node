@@ -16,12 +16,11 @@ class UserService {
 
   getUserInfo() {
     const {
-      candy, armor, talent, AC, DE, id, locked,
+      candy, armor, talent, id, locked,
     } = this.user;
-    const userInfo = {
-      candy, armor, talent, AC, DE, id, locked,
+    return {
+      candy, armor, talent, id, locked,
     };
-    return userInfo;
   }
 }
 

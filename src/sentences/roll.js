@@ -33,19 +33,29 @@ function masterRoller(context) {
   return resSentence;
 }
 
-function generateRollSentence(context, roll) {
-  if (roll === 0) {
-    return zeroPoint(context);
+function handleDestinyLeftHand(context, roll, details) {
+  const { sender: { user_id: userId } } = context;
+  const { data } = details;
+  resSentence.str = `[CQ:at, qq=${userId}] 天赋【命运的左手】发动
+三次命运骰的点数分别为 ${data[0]}, ${data[1]}, ${data[2]}, 你的roll点为 ${roll}`;
+  return resSentence;
+}
+
+function generateConditionSentence(context, roll, details) {
+  const { type } = details;
+  switch (type) {
+    case 'DESTINY_LEFT_HAND': return handleDestinyLeftHand(context, roll, details);
+    default: return null;
   }
-  if (roll < 30) {
-    return smallPoints(context, roll);
-  }
-  if (roll > 90) {
-    return largePoints(context, roll);
-  }
-  if (roll === 100) {
-    return masterRoller(context);
-  }
+}
+
+function generateRollSentence(context, roll, details) {
+  const { type } = details;
+  if (type) { return generateConditionSentence(context, roll, details); }
+  if (roll === 0) { return zeroPoint(context); }
+  if (roll < 30) { return smallPoints(context, roll); }
+  if (roll > 90) { return largePoints(context, roll); }
+  if (roll === 100) { return masterRoller(context); }
   return commonPoints(context, roll);
 }
 

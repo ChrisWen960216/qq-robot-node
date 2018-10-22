@@ -10,7 +10,7 @@ const { handleSeredipity } = require('./service/serendipity.js');
 
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = false;
+const TEST = true;
 
 // 处理群消息
 bot.on('message.group', async (e, context) => {
@@ -26,7 +26,7 @@ bot.on('message.group', async (e, context) => {
 
 bot.on('message.group.@.me', async (e, context) => {
   e.stopPropagation();
-  gameController(context, bot);
+  return gameController(context, bot);
 });
 
 // 奇遇上报部分

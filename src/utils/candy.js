@@ -1,5 +1,5 @@
 function generateCandy() {
-  const _candy = Math.floor(Math.random() * 10);
+  const _candy = Math.round(Math.random() * 10);
   return _candy;
 }
 

@@ -5,7 +5,8 @@ function generateTalentStoreSentence(context, data) {
     str: talentStore.map(item => ({
       type: 'text',
       data: {
-        text: `${item.id}: ${item.title} - ${item.type}
+        text: `${item.id}: ${item.title}
+--- ${item.desc}
 `,
       },
     })),

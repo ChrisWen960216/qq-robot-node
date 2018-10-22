@@ -11,7 +11,7 @@ const repeatController = require('./repeat');
 function mainController(context) {
   const { message } = context;
   if (message === 'roll') {
-    return rollController(message);
+    return rollController(context);
   }
   if (message === '签到') {
     return signInController(context);

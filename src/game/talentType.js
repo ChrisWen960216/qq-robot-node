@@ -7,6 +7,7 @@ const MATTHEW_CANDY = 'MATTHEW_CANDY';
 const FORBIDEN_SILENCE = 'FORBIDEN_SILENCE';
 const GODNESS_GIFT = 'GODNESS_GIFT';
 const LAST_CANDY = 'LAST_CANDY';
+const LIGHT_ORIGIN = 'LIGHT_ORIGIN';
 
 function reflexTalentCN(talentCN) {
   switch (talentCN) {
@@ -19,6 +20,7 @@ function reflexTalentCN(talentCN) {
     case '黑鬼的坟墓': return BLACK_TOMB;
     case '下一个牺牲者': return NEXT_VICTIM;
     case '最后的财宝': return LAST_CANDY;
+    case '光之起源': return LIGHT_ORIGIN;
     default: return null;
   }
 }
@@ -34,6 +36,7 @@ function reflexTalentEN(talentEN) {
     case 'BLACK_TOMB': return '黑鬼的坟墓';
     case 'NEXT_VICTIM': return '下一个牺牲者';
     case 'LAST_CANDY': return '最后的财宝';
+    case 'LIGHT_ORIGIN': return '光之起源';
     default: return null;
   }
 }
@@ -48,6 +51,7 @@ module.exports = {
   MATTHEW_CANDY,
   GODNESS_GIFT,
   LAST_CANDY,
+  LIGHT_ORIGIN,
   reflexTalentCN,
   reflexTalentEN,
 };

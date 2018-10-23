@@ -44,10 +44,15 @@ const userSchema = new Schema({
   versionKey: false,
 });
 
+const serendipitySchema = new Schema({
+  time: String,
+});
+
 
 mongoose.Promise = global.Promise;
 
 
 const User = blogDB.model('user', userSchema);
+const Serendipity = blogDB.model('serendipity', serendipitySchema);
 
-module.exports = { User };
+module.exports = { User, Serendipity };

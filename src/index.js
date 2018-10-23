@@ -10,12 +10,12 @@ const { handleSeredipity } = require('./service/serendipity.js');
 
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = true;
+const TEST = false;
 
 // 处理群消息
 bot.on('message.group', async (e, context) => {
-  const resData = await mainController(context);
   const { group_id: groupId } = context;
+  const resData = await mainController(context);
   if (!resData) { return null; }
   const resSentence = await mainSentence(context, resData);
   return bot('send_group_msg', {

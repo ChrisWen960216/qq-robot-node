@@ -32,6 +32,7 @@ function handleDeLeftHand() {
 function talentRollHandler(talent) {
   switch (talent) {
     case 'DESTINY_LEFT_HAND': return handleDeLeftHand();
+    case 'LIGHT_ORIGIN': return { type: 'roll', data: null, details: { type: 'LIGHT_ORIGIN', data: [] } };
     default: return commonRollHandler();
   }
 }

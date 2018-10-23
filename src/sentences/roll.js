@@ -36,22 +36,31 @@ function masterRoller(context) {
 function handleDestinyLeftHand(context, roll, details) {
   const { sender: { user_id: userId } } = context;
   const { data } = details;
-  resSentence.str = `[CQ:at, qq=${userId}] 天赋【命运的左手】发动
-三次命运骰的点数分别为 ${data[0]}, ${data[1]}, ${data[2]}, 你的roll点为 ${roll}`;
+  resSentence.str = `[CQ:at, qq=${userId}] 天赋【命运的左手】发动！
+三次命运骰的点数分别为 ${data[0]}, ${data[1]}, ${data[2]}, 你摇出了 ${roll}点`;
+  return resSentence;
+}
+
+function handleLightOrigin(context) {
+  const { sender: { user_id: userId } } = context;
+  resSentence.str = `[CQ:at, qq=${userId}] 天赋【光之起源】发动！你摇出了100点,真是欧皇附体!`;
   return resSentence;
 }
 
 function generateConditionSentence(context, roll, details) {
   const { type } = details;
   switch (type) {
-    case 'DESTINY_LEFT_HAND': return handleDestinyLeftHand(context, roll, details);
+    case 'DESTINY_LEFT_HAND':
+      return handleDestinyLeftHand(context, roll, details);
+    case 'LIGHT_ORIGIN':
+      return handleLightOrigin(context);
     default: return null;
   }
 }
 
 function generateRollSentence(context, roll, details) {
-  const { type } = details;
-  if (type) { return generateConditionSentence(context, roll, details); }
+  if (details && details.type) { return generateConditionSentence(context, roll, details); }
+
   if (roll === 0) { return zeroPoint(context); }
   if (roll < 30) { return smallPoints(context, roll); }
   if (roll > 90) { return largePoints(context, roll); }

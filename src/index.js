@@ -34,6 +34,7 @@ setInterval(() => {
   Serendipity.fetchList()
     .then(dataList => Serendipity.analyze(dataList))
     .then((data) => {
+      console.log(`当前时间${Date.now()}, 奇遇汇报 ${data}`);
       if (!data) { return null; }
       const resData = handleSeredipity(data);
       const resStr = mainSentence(null, resData);
@@ -43,7 +44,7 @@ setInterval(() => {
       });
     })
     .catch(error => console.error(error));
-}, 1000 * 30);
+}, 1000 * 10);
 
 
 module.exports = bot;

@@ -23,6 +23,7 @@ async function signInController(context) {
   if (talent === '女神的馈赠') { candy = 4; }
   if (locked) { candy = 0; }
   if (talent === '马太福音') { userInfo.matthewCandy = calMatthewCandy(candy); }
+  if (talent === '光之起源') { candy = 10; }
   userInfo.avatarSrc = avatarSrc;
 
   const [_error, _userInfo] = await updateUserById(userId, {

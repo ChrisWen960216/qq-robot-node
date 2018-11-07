@@ -21,7 +21,6 @@ class Serendipity {
     // 根据时间分析是否是新触发的奇遇
     const { time: _latestTime } = latestSerend;
 
-
     if (_latestTime === latestTime) { return null; }
 
     // 更新最新的奇遇时间
@@ -31,7 +30,7 @@ class Serendipity {
     const now = new Date().getTime();
     const realLatestTime = Number(_latestTime) * 1000;
     // 如果在当前时间的五分钟之前，那么依旧不上报
-    if ((now - realLatestTime) < (1 * 60 * 1000)) { return latestSerend; }
+    if ((now - realLatestTime) < (10 * 60 * 1000)) { return latestSerend; }
     return null;
   }
 

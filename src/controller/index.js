@@ -7,6 +7,7 @@ const rollController = require('./roll.js');
 const signInController = require('./signInController');
 const talentController = require('./talentController');
 const repeatController = require('./repeat');
+const goldSearchController = require('./goldSearch');
 
 function mainController(context) {
   const { message } = context;
@@ -18,6 +19,9 @@ function mainController(context) {
   }
   if (message.indexOf('天赋') > -1) {
     return talentController(context);
+  }
+  if (message === '金价') {
+    return goldSearchController(context);
   }
   return repeatController(context);
 }

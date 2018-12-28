@@ -10,9 +10,25 @@ const { handleSeredipity } = require('./service/serendipity.js');
 
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = false;
+// bot.on('socket.error', console.log);
 
-// 处理群消息
+// bot.on('message', (e, context) => {
+//   console.log(context);
+// });
+
+const TEST = true;
+
+
+bot.on('request.friend', () => bot('set_friend_add_request', {
+  approve: true,
+}));
+
+bot.on('request.group.invite', () => bot('set_group_add_request', {
+  sub_type: 'invite',
+  approve: true,
+}));
+
+// // 处理群消息
 bot.on('message.group', async (e, context) => {
   const { group_id: groupId } = context;
   const resData = await mainController(context);
@@ -29,7 +45,7 @@ bot.on('message.group.@.me', async (e, context) => {
   return gameController(context, bot);
 });
 
-// 奇遇上报部分
+// // 奇遇上报部分
 setInterval(() => {
   Serendipity.fetchList()
     .then(dataList => Serendipity.analyze(dataList))

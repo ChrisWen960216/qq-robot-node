@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "cq-websocket": "^1.6.1",
     "mongodb": "^3.1.8",
     "mongoose": "^5.3.4",

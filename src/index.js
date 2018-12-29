@@ -16,12 +16,12 @@ const bot = new CQWebSocket(clientConfig);
 //   console.log(context);
 // });
 
-const TEST = true;
+const TEST = false;
 
 
-bot.on('request.friend', () => bot('set_friend_add_request', {
-  approve: true,
-}));
+// bot.on('request.friend', () => bot('set_friend_add_request', {
+//   approve: true,
+// }));
 
 bot.on('request.group.invite', () => bot('set_group_add_request', {
   sub_type: 'invite',

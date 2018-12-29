@@ -8,14 +8,6 @@ function generateGoldSearchSentence(context, data) {
       },
     });
   }
-  dataStr.push({
-    type: 'text',
-    data: {
-      text: '数据来源 ---5173',
-    },
-  });
-
-  console.log(dataStr);
 
   return {
     type: 'goldSearch',

@@ -16,7 +16,7 @@ const bot = new CQWebSocket(clientConfig);
 //   console.log(context);
 // });
 
-const TEST = false;
+const TEST = true;
 
 
 // bot.on('request.friend', () => bot('set_friend_add_request', {

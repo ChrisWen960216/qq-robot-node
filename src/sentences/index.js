@@ -4,6 +4,7 @@ const { generateSignInSentence } = require('./signIn.js');
 const { generateRepeatSentence } = require('./repeat');
 const { generateTalentStoreSentence, generateBuyingTalentSentence } = require('./talent');
 const { generateGoldSearchSentence } = require('./goldSearch');
+const { generateDailyTasksSentence } = require('./dailyTaks');
 
 function mainSentence(context, dataConfig) {
   const { type, data, details = {} } = dataConfig;
@@ -16,6 +17,7 @@ function mainSentence(context, dataConfig) {
     case 'talentStore': return generateTalentStoreSentence(context, data);
     case 'buyingTalent': return generateBuyingTalentSentence(context, data);
     case 'goldSearch': return generateGoldSearchSentence(context, data);
+    case 'dailyTask': return generateDailyTasksSentence(context, data);
     default: return null;
   }
 }

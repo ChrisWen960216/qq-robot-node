@@ -7,7 +7,7 @@
 const request = require('request-promise');
 
 // const URL = 'https://jx3.derzh.com/serendipity/?m=1&test=1&R=%E7%94%B5%E4%BF%A1%E5%85%AB%E5%8C%BA&S=%E7%BB%9D%E4%BB%A3%E5%A4%A9%E9%AA%84&t=&s=&n=&csrf=';
-const URL = 'https://jx3.derzh.com/serendipity/?m=1&test=1&R=%E7%94%B5%E4%BF%A1%E5%85%AB%E5%8C%BA&S=%E7%BB%9D%E4%BB%A3%E5%A4%A9%E9%AA%84&t=%E7%BB%9D%E4%B8%96%E5%A5%87%E9%81%87&s=&n=&csrf=';
+const URL = 'https://jx3.derzh.com/serendipity/?m=1&test=1&R=%E7%94%B5%E4%BF%A1%E5%85%AB%E5%8C%BA&S=%E7%BB%9D%E4%BB%A3%E5%A4%A9%E9%AA%84&t=&s=&n=&csrf=';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 

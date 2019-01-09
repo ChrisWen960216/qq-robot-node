@@ -14,12 +14,12 @@ function mainController(context) {
   if (message === 'roll') {
     return rollController(context);
   }
-  if (message === '签到') {
-    return signInController(context);
-  }
-  if (message.indexOf('天赋') > -1) {
-    return talentController(context);
-  }
+  // if (message === '签到') {
+  //   return signInController(context);
+  // }
+  // if (message.indexOf('天赋') > -1) {
+  //   return talentController(context);
+  // }
   if (message === '金价') {
     return goldSearchController(context);
   }

@@ -24,7 +24,7 @@ function handleDeLeftHand() {
   const rollOne = rollUtils();
   const rollTwo = rollUtils();
   const rollThree = rollUtils();
-  const roll = Math.round((rollOne + rollTwo + rollThree) / 3);
+  const roll = Math.max(rollOne, rollTwo, rollThree);
   const details = { type: 'DESTINY_LEFT_HAND', data: [rollOne, rollTwo, rollThree] };
   return { type: 'roll', data: roll, details };
 }

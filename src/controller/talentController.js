@@ -32,9 +32,7 @@ function talentController(context) {
     talentData.type = 'talentStore';
     talentData.data = { talentStore: talentConfig };
   }
-  if (message.indexOf('购买天赋') > -1) {
-    return buyTalentController(context);
-  }
+  if (message.indexOf('购买天赋') > -1) { return buyTalentController(context); }
   return talentData;
 }
 

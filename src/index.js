@@ -10,7 +10,7 @@ const { handleSeredipity } = require('./service/serendipity.js');
 
 const bot = new CQWebSocket(clientConfig);
 
-const TEST = true;
+const TEST = false;
 
 
 bot.on('request.group.invite', () => bot('set_group_add_request', {

@@ -3,6 +3,13 @@
 > By node,based on node-cq-websocket
 
 
+## Docker
+
+```sh
+docker run --name=coolq --rm -p 9999:9000 -p 6700:6800  -v ~/coolq-data:/home/user/coolq -e COOLQ_URL=https://dlsec.cqp.me/cqp-full -e VNC_PASSWD=12345678 coolq/wine-coolq
+
+```
+
 ## 功能
 + `Roll` 点
   + 口令：roll
